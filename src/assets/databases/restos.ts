@@ -71,12 +71,14 @@ INSERT INTO resto (idR, nomR, voieAdrR, cpR, villeR, descR, horairesR, telR, mai
 
 INSERT INTO resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, descR, horairesR, telR, siteWeb) VALUES
 (2, 'le bar du charcutier', '30', 'rue Parlement Sainte-Catherine', '33000', 'Bordeaux', 'bar à vins, charcuteries et fromages', 'Du lundi au samedi 07:00 à 15:30','+33 6 16 14 22 33 - +33 5 57 26 63 17','www.lebarducharcutier.com'),
-(5, 'Agadir', '3', 'Rue Sainte-Catherine', '64100', 'Bayonne', 'Restaurant du monde', 'Tous les soirs 18:00 à 23:30','+33 7 23 41 67 18','www.agadir-resto.com'),
-(7, 'Talaia', 'quai pedros', '64100', 'Bayonne', 'Découverte de saveurs', 'Du lundi au vendredi 12:00 à 15:30','+33 7 09 54 32 11','www.talaia.com');
+(5, 'Agadir', '3', 'Rue Sainte-Catherine', '64100', 'Bayonne', 'Restaurant du monde', 'Tous les soirs 18:00 à 23:30','+33 7 23 41 67 18','www.agadir-resto.com');
 
 INSERT INTO resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, descR, horairesR, telR) VALUES
 (10, 'Bar du Marché', '39', 'Rue des Basques', '64100', 'Bayonne',  'bar à vins', 'Du lundi au samedi 07:00 à 14:00','+33 5 59 11 08 69'),
 (11, 'Trinquet Moderne', '60', 'Avenue Dubrocq', '64100', 'Bayonne', 'brasserie', 'Tous les soirs de 18:00 à 23:00','+33 9 09 33 52 18');
+
+INSERT INTO resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, descR, horairesR, telR, siteWeb) VALUES
+(7, 'Talaia', 'quai pedros', '64100', 'Bayonne', 'Découverte de saveurs', 'Du lundi au vendredi 12:00 à 15:30','+33 7 09 54 32 11','www.talaia.com');
 `;
 
 const initProposer = `
