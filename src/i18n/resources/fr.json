@@ -34,14 +34,18 @@
       "select": "select",
       "concat": "concat",
       "where": "where",
+      "empty or null":"valeur non renseignée",
       "whereNConditions": "whereNConditions"
     },
     "tasks": {
      "select_all_restos_Bayonne": "Affichez toutes les informations sur les restaurants de Bayonne.",
-     "select_all_restos_du_64": "Affichez toutes les informations sur les restaurants des Pyrénées-Atlantiques (code postal débute par 64).",
+     "select_idR_note_inf_3": "Affichez le numéro et la note des restaurants ayant eu moins de 3.",
+     "select_notes_diff_5": "Affichez le numéro et la note des restaurants n'ayant pas eu 5.",
+     "select_all_restos_pas_64": "Affichez toutes les informations sur les restaurants des Pyrénées-Atlantiques (code postal débute par 64).",
      "select_name_of_restos_finished_by_PAU": "Affichez le nom des restaurants dont le nom se termine par 'PAU'.",
-     "select_name_and_mail_of_restos_mail_not_empty": "Affichez le nom et mail des restaurants ayant un mail renseigné.",
-     "select_name_of_restos_mail_not_empty_not_null": "Affichez le nom des restaurants ayant un mail renseigné et non null. \n<0>Instruction à saisir :</0> <1>SELECT nomR FROM resto WHERE mailR != '' AND mailR IS NOT NULL;</1> \n \n Quelle est la différence entre les opérateurs != et IS NOT NULL ?",
+     "select_name_and_mail_of_restos_mail_not_null": "Affichez le nom et mail des restaurants ayant un mail non renseigné. \n<0>Instruction à saisir :</0> <1>SELECT nomR FROM resto WHERE mailR IS NOT NULL;</1>",
+     "select_name_and_mail_of_restos_mail_not_empty": "Affichez le nom et mail des restaurants ayant un mail renseigné.\n<0>Instruction à saisir :</0> <1>SELECT nomR FROM resto WHERE mailR != '';</1>",
+     "select_name_of_restos_mail_not_empty_not_null": "Affichez le nom des restaurants ayant un mail renseigné et non null. \n<0>Instruction à saisir :</0> <1>SELECT nomR FROM resto WHERE mailR IS NOT NULL AND mailR != '';</1> \n \n Quelle est la différence entre les opérateurs != et IS NOT NULL ?",
      "select_name_and_description_of_restos_brasserie_Bayonne": "Affichez le nom et la description des restaurants de Bayonne qui sont des brasseries.",
      "select_name_and_description_of_restos_brasserie_grill_Bordeaux": "Affichez le nom et description des restaurants de Bordeaux qui font ''brasserie'' et ''grill''.",
      "select_name_and_description_of_restos_PASbrasserie_MAISgrill": "Affichez le nom et la description des restaurants qui font ''grill'' MAIS PAS ''brasserie''.",
@@ -53,7 +57,6 @@
      "select_all_of_restos_NiPortable_NiMail": "Affichez toutes les informations des restaurants N'ayant NI un numéro de portable NI un mail.",
     "select_name_and_adresse(num_rue_ville)_of_restos_Pau_EtBayonne_Ouvre_7h": "Affichez le nom et l'adresse des restaurants de Pau ou Bayonne qui ouvrent à 7:00 du matin. Le numero, rue et ville seront regroupés dans une colonne nommée ''Adresse''.",
     "select_description_and_name_of_restos_Pau_OrderBy_Description_OrderDesc": "Affichez la description et le nom des restaurants de PAU, liste triée par description (de Z à A)."
-
   }
   }
 }
