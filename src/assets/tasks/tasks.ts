@@ -8,7 +8,7 @@ export interface Task {
   database: DatabaseId;
   referenceSql: string;
   tables: string[];
-}
+};
 
 export const tasksList: Task[] = [
   // Simple Where
@@ -30,7 +30,7 @@ export const tasksList: Task[] = [
     id: "select_notes_diff_5",
     topic: "revisions",
     database: "restos",
-    referenceSql: "SELECT idR, note FROM critiquer WHERE note !=3 ORDER BY idR, note DESC;",
+    referenceSql: "SELECT idR, note FROM critiquer WHERE note !=5 ORDER BY idR, note DESC;",
     tables: ["critiquer"],
   },
   { // Task 4 LIKE début
@@ -55,7 +55,7 @@ export const tasksList: Task[] = [
     referenceSql: "SELECT nomR, mailR FROM resto WHERE mailR IS NOT NULL;",
     tables: ["resto"],
   },
-  { // Task 7 exemple fourni 
+  { // Task 7 exemple fourni ==> comprendre la différence avec la Task précédente
     // Select champ renseigné  != ''
     id: "select_name_and_mail_of_restos_mail_not_empty",
     topic: "empty or null",
@@ -63,12 +63,12 @@ export const tasksList: Task[] = [
     referenceSql: "SELECT nomR, mailR FROM resto WHERE mailR != '';",
     tables: ["resto"],
   },
-  { // Task 8 : exemple fourni ==> comprendre la différence avec la Task précédente
+  { // Task 8 : exemple fourni 
      // Select champ non vide  != '' ou is not null
     id: "select_name_of_restos_mail_not_empty_not_null",
     topic: "whereNConditions",
     database: "restos",
-    referenceSql: "SELECT nomR FROM resto WHERE mailR IS NOT NULL AND mailR != '';",
+    referenceSql: "SELECT nomR, mailR FROM resto WHERE mailR IS NOT NULL AND mailR != '';",
     tables: ["resto"],
   },
   { // Task 9
