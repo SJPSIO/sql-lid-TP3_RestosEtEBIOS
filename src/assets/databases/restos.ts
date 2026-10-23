@@ -1,41 +1,4 @@
 import { Database } from "./databases";
-
-const initUtilisateur = `
-CREATE TABLE utilisateur (
-  mailU varchar(150) NOT NULL PRIMARY KEY,
-  mdpU varchar(50) DEFAULT NULL,
-  pseudoU varchar(50) DEFAULT NULL
-) ;
-
-INSERT INTO utilisateur (mailU, mdpU, pseudoU) VALUES
-('alex.garat@gmail.com', '$1$zvN5hYSQSQDFUIQSdufUQSDFznHF5osT.', '@lex'),
-('exemple@sio.lan', 'sej5vWNdAeBCw', 'toto'),
-('jj.soueix@gmail.com', '$1$zvN5hYMI$SDFGSDFGJqJSDJF.', 'drskott'),
-('michel.garay@gmail.com', '$1$zvN5hYMI$VSatLQ6SDFGdsfgznHF5osT.', 'Mitch'),
-('nicolas.harispe@gmail.com', '$1$zvNDSFQSdfqsDfQsdfsT.', 'Nico40'),
-('y.barrot@gmail.com', '$1$zvN5SFDLGKDLFgiIQSOUSDFqqsdFsT.', 'lechambon');
-`;
-
-const initTypeCuisine = `
-CREATE TABLE typeCuisine (
-  idTC bigint(20) NOT NULL PRIMARY KEY,
-  libelleTC varchar(255) DEFAULT NULL
-) ;
-
-INSERT INTO typeCuisine (idTC, libelleTC) VALUES
-(1, 'sud ouest'),
-(2, 'japonaise'),
-(3, 'orientale'),
-(4, 'fastfood'),
-(5, 'vegetarienne'),
-(6, 'vegan'),
-(7, 'crepe'),
-(8, 'sandwich'),
-(9, 'tartes'),
-(10, 'viande'),
-(11, 'grillade');
-`;
-
 const initResto = `
 CREATE TABLE resto (
   idR bigint(20) NOT NULL PRIMARY KEY,
@@ -48,14 +11,14 @@ CREATE TABLE resto (
   horairesR text DEFAULT NULL,
   telR varchar(38) DEFAULT NULL,
   mailR varchar(40) DEFAULT NULL,
-  siteWeb varchar(40) DEFAULT NULL
+  siteWeb varchar(40) DEFAULT NULL,
+  FOREIGN KEY (idR) REFERENCES resto (idR) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ;
 
 INSERT INTO resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, descR, horairesR, telR, mailR, siteWeb) VALUES
 (8, 'La table de POTTOKA', '21', 'Quai Amiral Dubourdieu', '64100', 'Bayonne',  'Cuisine revisitée et moderne', 'Du lundi au vendredi 12:00-15:30','+33 9 59 67 88 23 - +33 7 58 92 15 24','contact@pottoka.fr','www.pottoka.com'),
 (12, 'O''grill family', '46', 'Avenue du loup', '64000', 'Pau', 'grill', 'Tous les jours : 11:00 à 15:00 puis 18:00 à 02:00','+33 5 59 32 28 93','ogrill@bouygues.fr','www.ogrill-pau.com'),
 (13, 'Mesopotamie grill Pau', '23', 'Avenue Vignancour', '64000', 'Pau', 'brasserie, grill', 'Du Lundi au vendredi : 07:00 à 22:00','+33 9 59 67 88 23 - +33 7 58 92 15 24','mesopotamie@pau.fr','www.mesopotamie.pau.com');
-
 
 INSERT INTO resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, descR, horairesR, telR, mailR) VALUES
 (1, 'l''entrepote', '2', 'rue Maurice Ravel', '33000', 'Bordeaux', 'Brasserie, grill', 'Tous les jours sauf dimanche : 12:00 à 15:00 puis 19:00 à 23:00','+33 5 57 30 66 47','lentrepote@gmail.com'),
@@ -77,71 +40,10 @@ INSERT INTO resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, descR, horairesR, 
 (10, 'Bar du Marché', '39', 'Rue des Basques', '64100', 'Bayonne',  'bar à vins', 'Du lundi au samedi 07:00 à 14:00','+33 5 59 11 08 69'),
 (11, 'Trinquet Moderne', '60', 'Avenue Dubrocq', '64100', 'Bayonne', 'brasserie', 'Tous les soirs de 18:00 à 23:00','+33 9 09 33 52 18');
 
-INSERT INTO resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, descR, horairesR, telR, siteWeb) VALUES
+INSERT INTO resto (idR, nomR, voieAdrR, cpR, villeR, descR, horairesR, telR, siteWeb) VALUES
 (7, 'Talaia', 'quai pedros', '64100', 'Bayonne', 'Découverte de saveurs', 'Du lundi au vendredi 12:00 à 15:30','+33 7 09 54 32 11','www.talaia.com');
+
 `;
-
-const initProposer = `
-CREATE TABLE proposer (
-  idR bigint(20) NOT NULL,
-  idTC bigint(20) NOT NULL,
-  PRIMARY KEY (idR,idTC),
-  FOREIGN KEY (idR) REFERENCES resto (idR) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  FOREIGN KEY (idTC) REFERENCES typeCuisine (idTC) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ;
-
-INSERT INTO proposer (idR, idTC) VALUES
-(1, 1),
-(2, 1),
-(3, 3),
-(4, 1),
-(4, 11),
-(5, 3),
-(6, 10),
-(7, 6),
-(7, 7),
-(8, 11),
-(9, 10),
-(10, 1),
-(11, 1),
-(11, 10);
- `;
-
-const initPreferer = `
-CREATE TABLE preferer (
-  mailU varchar(150) NOT NULL,
-  idTC bigint(20) NOT NULL,
-  PRIMARY KEY (mailU,idTC),
-  FOREIGN KEY (mailU) REFERENCES utilisateur (mailU) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  FOREIGN KEY (idTC) REFERENCES typeCuisine (idTC) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ;
-
-INSERT INTO preferer (mailU, idTC) VALUES
-('michel.garay@gmail.com', 1),
-('michel.garay@gmail.com', 2),
-('michel.garay@gmail.com', 3),
-('michel.garay@gmail.com', 10),
-('nicolas.harispe@gmail.com', 1),
-('nicolas.harispe@gmail.com', 2),
-('nicolas.harispe@gmail.com', 11),
-('y.barrot@gmail.com', 4),
-('y.barrot@gmail.com', 10);
- `;
-
-const initPhoto = `
-CREATE TABLE photo (
-  idP bigint(20) NOT NULL PRIMARY KEY,
-  cheminP varchar(255) DEFAULT NULL,
-  idR bigint(20) DEFAULT NULL,
-  FOREIGN KEY (idR) REFERENCES resto (idR) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ;
-
-INSERT INTO photo (idP, cheminP, idR) VALUES
-(0, 'entrepote1.jpg', 1),
-(1, 'entrepote2.jpg', 1),
-(2, 'entrepote3.jpg', 1),
-(3, 'resto.jpg', 2);
- `;
 
 const initCritiquer = `
 CREATE TABLE critiquer (
@@ -149,9 +51,7 @@ CREATE TABLE critiquer (
   mailU varchar(150) NOT NULL,
   note int(11) DEFAULT NULL,
   commentaire varchar(4096) DEFAULT NULL,
-  PRIMARY KEY (idR,mailU),
-  FOREIGN KEY (idR) REFERENCES resto (idR) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  FOREIGN KEY (mailU) REFERENCES utilisateur (mailU) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (idR,mailU)
 ) ;
 
 INSERT INTO critiquer (idR, mailU, note, commentaire) VALUES
@@ -167,24 +67,8 @@ INSERT INTO critiquer (idR, mailU, note, commentaire) VALUES
 (7, 'y.barrot@gmail.com', 5, 'Service efficace.');
  `;
 
-const initAimer = `
-CREATE TABLE aimer (
-  idR bigint(20) NOT NULL,
-  mailU varchar(150) NOT NULL,
-  PRIMARY KEY (idR,mailU),
-  FOREIGN KEY (idR) REFERENCES resto (idR) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  FOREIGN KEY (mailU) REFERENCES utilisateur (mailU) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ;
-
-INSERT INTO aimer (idR, mailU) VALUES
-(1, 'michel.garay@gmail.com'),
-(8, 'jj.soueix@gmail.com'),
-(10, 'alex.garat@gmail.com'),
-(10, 'y.barrot@gmail.com'),
-(11, 'nicolas.harispe@gmail.com');
- `;
 
  export const restos: Database = {
   name: "restos",
-  initSql: `${initUtilisateur}${initTypeCuisine}${initResto}${initProposer}${initPreferer}${initPhoto}${initCritiquer}${initAimer}`,
+  initSql: `${initResto}${initCritiquer}`,
 };
