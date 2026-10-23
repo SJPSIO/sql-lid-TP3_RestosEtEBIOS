@@ -145,10 +145,10 @@ export const tasksList: Task[] = [
   } 
   ,
  { // Task 19 : en autonomie
-    id: "select_description_and_name_of_restos_Pau_OrderBy_Description_OrderDesc",
+    id: "select_description_and_name_of_creperies_Pau_OrderBy_Description_OrderDesc",
     topic: "whereNConditions",
     database: "restos",
-    referenceSql: "SELECT descR, nomR FROM resto WHERE villeR='Pau' ORDER BY descR DESC;",
+    referenceSql: "SELECT descR, nomR FROM resto WHERE villeR='Pau' AND (nomR LIKE '%creperie%' OR descR LIKE '%creperie%') ORDER BY descR DESC;",
     tables: ["resto"],
   } 
  

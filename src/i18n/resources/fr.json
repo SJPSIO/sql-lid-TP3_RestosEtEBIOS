@@ -56,7 +56,7 @@
      "select_name_and_tel_of_restos_Portable_Et_Fixe": "Affichez le nom et téléphone des restaurants ayant un numéro de portable et un numéro de fixe (débute par 05 ou 09).",
      "select_all_of_restos_NiPortable_NiMail": "Affichez toutes les informations des restaurants N'ayant NI un numéro de portable NI un mail.",
     "select_name_and_adresse(num_rue_ville)_of_restos_Pau_EtBayonne_Ouvre_7h": "Affichez le nom et l'adresse des restaurants de Pau ou Bayonne qui ouvrent à 7:00 du matin. Le numero, rue et ville seront regroupés dans une colonne nommée ''Adresse''.",
-    "select_description_and_name_of_restos_Pau_OrderBy_Description_OrderDesc": "Affichez la description et le nom des restaurants de PAU, liste triée par description (de Z à A)."
+    "select_description_and_name_of_creperies_Pau_OrderBy_Description_OrderDesc": "Affichez la description et le nom des crêperies de PAU, liste triée par description (de Z à A)."
   }
   }
 }
